@@ -1,0 +1,23 @@
+<?php declare(strict_types=1);
+
+namespace DummyNamespace;
+
+use App\Repositories\AbstractRepository;
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * DummyClass repository
+ * @author dadanhidayat <dadan@gmail.com>
+ */
+final class DummyClass extends AbstractRepository
+{
+    /**
+     * Table of repository
+     * @var Model $model
+     */
+    protected Model $model;
+
+    public function __construct(){
+
+    }
+}

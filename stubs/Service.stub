@@ -1,0 +1,15 @@
+<?php declare(strict_types=1);
+
+namespace DummyNamespace;
+
+use App\Services\AbstractService;
+
+
+/**
+ * DummyClass services
+ * @author dadanhidayat <dadan@gmail.com>
+ */
+final class DummyClass extends AbstractService
+{
+
+}
