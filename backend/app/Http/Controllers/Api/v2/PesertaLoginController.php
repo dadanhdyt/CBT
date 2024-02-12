@@ -7,14 +7,24 @@ use App\Services\PesertaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
 use Validator;
-
+/***
+ * @class PesertaLogin
+ ***/
 class PesertaLoginController extends Controller
 {
+    public function logout(Request $request) {
+        $peserta = $request->get('data_peserta');
+        $peserta->update(['api_token'=>uuid_create(UUID_TYPE_DEFAULT)]);
+        return $peserta;
+    }
     public function index(Request $request, PesertaService $pesertaService){
             $validator = FacadesValidator::make($request->all() ,[
                 'kode_peserta' => 'required|string|max:10',
                 'password' => 'required',
             ]);
+            /**
+             * jika validasinya gagal
+             */
             if($validator->fails()) {
                 return response([
                     'error' => true,
@@ -23,6 +33,9 @@ class PesertaLoginController extends Controller
                     ],
                 ],403);
             }else{
+                /**
+                 * proses login
+                 */
                 $logedin = $pesertaService->login($validator->validated());
                 if($logedin) {
                     return response([

@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Traits\HasUuidModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Jadwal extends Model
@@ -14,8 +15,8 @@ class Jadwal extends Model
      *
      * @return void
      */
-    public function event() : HasMany{
-        return $this->hasMany(Event::class);
+    public function event() : BelongsTo{
+        return $this->belongsTo(Event::class);
     }
     /**
      * Undocumented function
@@ -24,5 +25,11 @@ class Jadwal extends Model
      */
     public function getUjianAktif(){
         return $this->whereStatus(true)->get();
+    }
+    public function bank_soal(){
+        return $this->belongsTo(BankSoal::class);
+    }
+    public function peserta_ujian(){
+        return $this->hasMany(PesertaUjian::class);
     }
 }

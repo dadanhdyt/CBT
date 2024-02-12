@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 const store = reactive({
   token: localStorage.getItem('_token'),
-  API_ENDPOINT: 'http://192.168.43.50:8000',
+  API_ENDPOINT: 'http://localhost:8000',
   page_loading: false,
   setPageLoading(loading) {
     return (this.page_loading = loading)

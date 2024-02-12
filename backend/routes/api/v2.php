@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v2\PesertaLoginController;
+use App\Http\Controllers\PesertaUjianController;
 use App\Http\Middleware\PesertaAuthMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,12 +22,15 @@ Route::prefix('/peserta')->group(function(){
      */
     Route::post('/login',[PesertaLoginController::class,'index']);
     Route::middleware(PesertaAuthMiddleware::class)->group(function(){
+        Route::post('/logout',[PesertaLoginController::class,'logout']);
         Route::get('/get_user',function(Request $request){
-            var_dump($request->get('data_peserta')->toArray());
-            return response($request->data_peserta,200);
+            return response([
+                'error' => false,
+                'data' => $request->get('data_peserta'),
+            ],200);
         });
         Route::prefix('/ujian')->group(function(){
-
+            Route::get('/get_ujian',[PesertaUjianController::class,'getUjian']);
         });
     });
 });

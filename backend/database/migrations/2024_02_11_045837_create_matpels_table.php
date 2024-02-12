@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('matpels', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->string('kode_mapel')->unique();
             $table->string('nama');
             $table->foreignUuid('agama_id')->nullable()->constrained('agamas','id')->cascadeOnUpdate()->restrictOnDelete();
@@ -31,3 +31,5 @@ return new class extends Migration
         Schema::dropIfExists('matpels');
     }
 };
+
+

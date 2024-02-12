@@ -27,7 +27,7 @@ class PesertaAuthMiddleware
             }
         }
         return response()->json([
-            'message' => "Fak Kata gweh teh"
+            'message' => "!Work"
         ], 401);
     }
 }

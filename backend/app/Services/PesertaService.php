@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\PesertaUjian;
 use App\Repositories\Contracts\RepositoryInterface;
+use App\Repositories\JadwalUjianRepository;
 use App\Repositories\PesertaRepository;
 use App\Services\AbstractService;
 
@@ -13,10 +15,12 @@ use App\Services\AbstractService;
  */
 final class PesertaService extends AbstractService
 {
-    public RepositoryInterface $pesertaRepository;
+    public JadwalUjianRepository $jadwalUjianRepository;
+    public PesertaRepository $pesertaRepository;
     public function __construct()
     {
         $this->pesertaRepository = new PesertaRepository();
+        $this->jadwalUjianRepository = new JadwalUjianRepository();
     }
     public function login($data): mixed
     {
@@ -33,4 +37,6 @@ final class PesertaService extends AbstractService
         }
         return false;
     }
+
+
 }

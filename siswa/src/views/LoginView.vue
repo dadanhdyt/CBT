@@ -20,12 +20,7 @@ async function login() {
   try {
     let response = await $api.post('peserta/login', userLoginData.value)
     if (response.status === 200 && response.data.error == false) {
-      toast.update(toast_id, {
-        isLoading: false,
-        autoClose: true,
-        type: 'success',
-        render: 'Login berhasil'
-      })
+      toast.remove(toast_id)
       const token = response.data.api_token
       if (token) {
         store.setAuthToken(token)
@@ -38,6 +33,7 @@ async function login() {
         isLoading: false,
         autoClose: true,
         type: 'error',
+        position:'top-left',
         render: 'Ada kesalahan saat meminta data'
       })
     }

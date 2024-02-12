@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Listeners\LogoOnOutputConsole;
+use App\Listeners\TeksOnOutputConsole;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
+use Illuminate\Console\Events\CommandFinished;
+use Illuminate\Console\Events\CommandStarting;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
@@ -18,6 +22,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        CommandStarting::class => [
+            LogoOnOutputConsole::class,
+        ],
+        CommandFinished::class => [
+            TeksOnOutputConsole::class
+        ]
     ];
 
     /**
