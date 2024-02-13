@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
      $this->call(AgamaSeeder::class);
      $this->call(JurusanSeeder::class);
      $this->call(PesertaSeeder::class);
+     $this->call(EventSeeder::class);
      $this->call(MatpelSeeder::class);
+     $this->call(BankSoalSeeder::class);
+     $this->call(JadwalSeeder::class);
     }
 }

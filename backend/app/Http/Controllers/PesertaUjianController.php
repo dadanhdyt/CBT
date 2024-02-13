@@ -19,4 +19,12 @@ class PesertaUjianController extends Controller
             'data' => $pesertaujian,
         ], 200);
     }
+    /**
+     * konfirmasi ujian
+     *
+     * @return void
+     */
+    public function confirm(){
+
+    }
 }
